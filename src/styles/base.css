@@ -1,0 +1,56 @@
+/* ------------------------------------------------------------------ */
+/*  Design tokens                                   */
+/* ------------------------------------------------------------------ */
+:root {
+  --card:          #ffffff;
+  --ink:           #22211f;
+  --muted:         #5f5e5c;
+  --line:          #d3d3d2;
+  --line-soft:     #e9e8e7;
+
+  --brand:         #d3374a;
+  --brand-dark:    #a82c3c;
+  --brand-tint:    #fbeaec;
+  --brand-tint-2:  #f7d9dd;
+
+  --good:          #418232;
+  --good-line:     #a0c098;
+  --good-bg:       #f3f8f1;
+  --improve:       #af3769;
+  --improve-line:  #d79bb3;
+  --improve-bg:    #fcf2f6;
+
+  --radius:        16px;
+  --shadow:        0 18px 40px -26px rgba(34, 33, 31, .38);
+
+  --tab-w:      46px;
+  --tab-h:      116px;
+  --tab-offset: -46px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background:
+    radial-gradient(1000px 480px at 10% -14%, #fbeaec 0%, rgba(251,234,236,0) 62%),
+    radial-gradient(880px 440px at 104% -8%, #f0efee 0%, rgba(240,239,238,0) 58%),
+    linear-gradient(180deg, #ffffff 0%, #f7f7f6 100%);
+  background-attachment: fixed;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 28px 20px 130px;
+}

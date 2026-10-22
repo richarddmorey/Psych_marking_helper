@@ -1,0 +1,115 @@
+{
+  "practical": {
+    "id": "practical",
+    "title": "Practical Marking Helper",
+    "prefixes": {
+      "good": "What was done well: ",
+      "improve": "What could be improved: "
+    },
+    "sections": [
+      {
+        "id": "intro",
+        "heading": "1. Introduction:",
+        "consider": "coherence of argument, selection and synthesis of evidence, strength of rationale, derivation of hypotheses, and depth of understanding.",
+        "boxes": [
+          { "key": "good", "kind": "good", "placeholder": "What was done well?" },
+          { "key": "improve", "kind": "improve", "placeholder": "What could be improved?" }
+        ]
+      },
+      {
+        "id": "method",
+        "heading": "2. Method:",
+        "consider": "replicability, organisation, methodological understanding and terminology, operationalisation, implications of design choices, and ethical reporting.",
+        "boxes": [
+          { "key": "good", "kind": "good", "placeholder": "What was done well?" },
+          { "key": "improve", "kind": "improve", "placeholder": "What could be improved?" }
+        ]
+      },
+      {
+        "id": "results",
+        "heading": "3. Results:",
+        "consider": "clarity and economy of presentation, tables and figures, appropriateness and justification of analysis, statistical reporting, and accuracy and restraint of interpretation.",
+        "boxes": [
+          { "key": "good", "kind": "good", "placeholder": "What was done well?" },
+          { "key": "improve", "kind": "improve", "placeholder": "What could be improved?" }
+        ]
+      },
+      {
+        "id": "discussion",
+        "heading": "4. Discussion:",
+        "consider": "interpretation of findings, integration with theory and evidence, alternative explanations, evaluation and prioritisation of limitations, justified improvements and future research, and critical independence.",
+        "boxes": [
+          { "key": "good", "kind": "good", "placeholder": "What was done well?" },
+          { "key": "improve", "kind": "improve", "placeholder": "What could be improved?" }
+        ]
+      },
+      {
+        "id": "feedforward",
+        "heading": "5. Key point for your next submission:",
+        "final": true,
+        "boxes": [
+          { "key": "single", "placeholder": "Provide one specific feedforward priority for future assessments and professional development." }
+        ]
+      }
+    ]
+  },
+  "essay": {
+    "id": "essay",
+    "title": "Essay Marking Helper",
+    "prefixes": {
+      "good": "Key strengths: ",
+      "improve": "Most important improvements: "
+    },
+    "sections": [
+      {
+        "id": "question",
+        "heading": "1. Addressing the question and argument:",
+        "consider": "strengths and how improvement can be made to more effectively address the essay assignment and develop a coherent argument.",
+        "boxes": [
+          { "key": "comments", "placeholder": "Add your comments here" }
+        ]
+      },
+      {
+        "id": "knowledge",
+        "heading": "2. Knowledge and use of evidence:",
+        "consider": "strengths and how to improve evidencing accuracy and depth of knowledge; e.g., selection of relevant theories and empirical evidence; appropriate use of primary research; relevance of sources, etc.",
+        "boxes": [
+          { "key": "comments", "placeholder": "Add your comments here" }
+        ]
+      },
+      {
+        "id": "analysis",
+        "heading": "3. Analysis and critical judgement:",
+        "consider": "strengths in this area and how to improve evaluation of material beyond a simple description, such as strengths and limitations and their implications. This can include evidence of reading beyond taught material, appropriate selection of material and identifying gaps in knowledge.",
+        "boxes": [
+          { "key": "comments", "placeholder": "Add your comments here" }
+        ]
+      },
+      {
+        "id": "synthesis",
+        "heading": "4. Synthesis, intellectual reasoning and originality:",
+        "consider": "strengths and how to improve evidence of considering evidence across studies and theories, insightful comparisons/interpretations and building conclusions and future research based on the balance of evidence.",
+        "boxes": [
+          { "key": "comments", "placeholder": "Add your comments here" }
+        ]
+      },
+      {
+        "id": "inclusivity",
+        "heading": "5. Inclusivity, generalisability and application:",
+        "consider": "strengths in this area and how to improve evidencing of considering participant experiences, missing information, sampling methods, etc.",
+        "boxes": [
+          { "key": "comments", "placeholder": "Add your comments here" }
+        ]
+      },
+      {
+        "id": "overall",
+        "heading": "6. Overall feedback:",
+        "final": true,
+        "boxes": [
+          { "key": "strengths", "kind": "good", "placeholder": "Key strengths" },
+          { "key": "improvements", "kind": "improve", "placeholder": "Most important improvements" }
+        ]
+      }
+    ]
+  }
+}

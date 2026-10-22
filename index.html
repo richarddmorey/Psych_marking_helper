@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practical Marking Helper</title>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ==================== Sticky top bar ==================== -->
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <h1>
+        <span id="brandTitleText">Practical Marking Helper</span>
+        <span class="brand-suffix">· School of Psychology</span>
+      </h1>
+      <span class="brand-mark" aria-hidden="true">C</span>
+    </div>
+
+    <div class="topbar-controls">
+      <div class="template-field">
+        <label class="field-label" for="templateSelect">Template</label>
+        <select id="templateSelect" class="template-input">
+        </select>
+      </div>
+
+      <div class="word-count" id="wordCount" title="Total feedback word count">
+        <span class="word-count-value" id="wordCountValue">0</span>
+        <span class="word-count-label">words</span>
+        <span class="word-count-sep" aria-hidden="true">·</span>
+        <span class="word-count-value" id="charCountValue">0</span>
+        <span class="word-count-label">chars</span>
+      </div>
+
+      <div class="name-field">
+        <label class="field-label" for="name">Marker name</label>
+        <input id="name" class="name-input" type="text"
+               placeholder="Your name" autocomplete="name"
+               spellcheck="false"
+               aria-describedby="nameError">
+        <p class="field-error" id="nameError" role="alert" hidden>
+          Please enter your name before copying — it is added to the top of your feedback.
+        </p>
+      </div>
+
+      <button type="button" class="howto" id="openInstructions"
+              aria-haspopup="dialog" aria-label="How to use this tool">
+        <span class="howto-icon" aria-hidden="true">?</span>
+        <span>How to use</span>
+      </button>
+
+      <button type="button" class="howto" id="resetAllBtn"
+              aria-label="Reset all feedback" title="Reset all feedback">
+        <span class="howto-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round">
+            <path d="M3 6h18"/>
+            <path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/>
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+            <path d="M10 11v6M14 11v6"/>
+          </svg>
+        </span>
+        <span>Reset all</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== Timer dock (top-left, single tab) ==================== -->
+<div class="timer-dock" id="timerDock">
+  <button type="button" class="timer-tab" id="timerTab"
+          title="Open timer"
+          aria-label="Open timer"
+          aria-expanded="false"
+          aria-controls="timerPanel">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7v5l3 2"/>
+    </svg>
+    <span>Timer</span>
+  </button>
+
+  <div class="timer-panel-wrap">
+    <div class="timer-panel" id="timerPanel">
+      <div class="timer-display" id="timerDisplay">0:00</div>
+      <div class="timer-buttons">
+        <button type="button" class="btn btn-primary" id="timerStartStop">Start</button>
+        <button type="button" class="btn btn-ghost" id="timerReset">Reset</button>
+      </div>
+
+      <hr class="timer-divider">
+
+      <div class="settings-group" id="warningGroup">
+        <div class="settings-header">
+          <span class="settings-label">Warning</span>
+          <label class="toggle">
+            <input type="checkbox" id="warningToggle">
+            <span class="toggle-track" aria-hidden="true"></span>
+          </label>
+        </div>
+        <div class="duration-input" id="warningDuration">
+          <input type="number" id="warningMin" min="0" max="99" value="2"
+                 inputmode="numeric" aria-label="Warning minutes">
+          <span class="sep">:</span>
+          <input type="number" id="warningSec" min="0" max="59" value="0"
+                 inputmode="numeric" aria-label="Warning seconds">
+          <span class="unit">min:sec</span>
+        </div>
+      </div>
+
+      <div class="settings-group" id="alarmGroup">
+        <div class="settings-header">
+          <span class="settings-label">Alarm</span>
+          <label class="toggle">
+            <input type="checkbox" id="alarmToggle">
+            <span class="toggle-track" aria-hidden="true"></span>
+          </label>
+        </div>
+        <div class="duration-input" id="alarmDuration">
+          <input type="number" id="alarmMin" min="0" max="99" value="5"
+                 inputmode="numeric" aria-label="Alarm minutes">
+          <span class="sep">:</span>
+          <input type="number" id="alarmSec" min="0" max="59" value="0"
+                 inputmode="numeric" aria-label="Alarm seconds">
+          <span class="unit">min:sec</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Main feedback form ==================== -->
+<div class="page">
+  <main id="content" aria-label="Feedback sections"></main>
+</div>
+
+<!-- ==================== Preview dock (left) ==================== -->
+<aside class="preview-dock" id="previewDock">
+  <div class="preview-panel" id="previewPanel">
+    <div class="preview-panel-inner" id="previewPanelInner" aria-hidden="true">
+      <div class="preview-head">
+        <h2>Preview</h2>
+        <p id="previewSubtitle">Rendered view — the copied text includes HTML tags.</p>
+      </div>
+
+      <div class="format-toggle">
+        <label class="format-toggle-label" for="htmlModeToggle">
+          <input type="checkbox" id="htmlModeToggle" checked>
+          <span class="format-toggle-switch" aria-hidden="true"></span>
+          <span class="format-toggle-text">Include HTML tags</span>
+        </label>
+        <span class="hint-icon" tabindex="0" role="button"
+              aria-label="What does this option do?"
+              data-tooltip="Untick to copy plain text with real line breaks instead of HTML tags.">?</span>
+      </div>
+
+      <p class="preview-warning" id="previewWarning" hidden>
+        Enter your name at the top of the page before copying.
+      </p>
+
+      <div class="preview-box">
+        <div class="preview-box-label" id="previewBoxLabel">Feedback to copy (rendered)</div>
+        <div class="preview-body" id="previewBody"></div>
+      </div>
+    </div>
+
+    <div class="side-tabs">
+      <button type="button" class="side-tab side-tab--copy" id="copyTab"
+              aria-label="Copy feedback to clipboard"
+              title="Copy feedback to clipboard (Ctrl/Cmd + Enter)">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <rect x="9" y="9" width="12" height="12" rx="2"/>
+          <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>
+        </svg>
+        <span>Copy</span>
+      </button>
+
+      <button type="button" class="side-tab side-tab--preview" id="previewTab"
+              aria-expanded="false" aria-controls="previewPanel"
+              aria-label="Show feedback preview" title="Show feedback preview">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span>Preview</span>
+      </button>
+    </div>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ==================== Instructions dialog ==================== -->
+<dialog class="app-dialog instr-dialog" id="instrDialog" aria-labelledby="instrTitle">
+  <div class="app-dialog-inner">
+    <button type="button" class="modal-close" id="closeInstructions" aria-label="Close instructions">&times;</button>
+
+    <h2 id="instrTitle">How to use this tool</h2>
+
+    <p>Enter your name in the top bar, choose the template, add text to the boxes under each section, then click the red <em>Copy</em> tab on the left edge. A formatted version of everything you have written is copied, ready to paste into the text feedback box in TurnItIn.</p>
+
+    <p class="tip">It is not expected that you will comment on every section, particularly if the submission is very good. To keep the process efficient, salient comments about mechanisms for improving can be reserved for the final section.</p>
+
+    <ul>
+      <li>If you fill in only <em>one</em> box in a section, no prefix is added — useful when your comment does not fit the two-box pattern.</li>
+      <li>If you fill in <em>both</em> boxes in a section, the two comments are separated by a blank line in the copied output, so the strengths and the improvements read as distinct paragraphs.</li>
+      <li>Sections you leave completely blank are omitted from the copied text, so you can skip any section you have nothing to say about.</li>
+      <li>Your marker name is required and is added at the top of the copied text, so the feedback is attributed to you.</li>
+      <li>Write your feedback in paragraphs — pressing Enter inside a box starts a new line, and your paragraph breaks are preserved when the feedback is pasted.</li>
+      <li>Click a section heading to collapse or expand it; use the × in its corner to clear just that section.</li>
+
+      <li>The <em>Timer</em> button in the top-left corner of the page opens a panel containing both the timer and its settings. Click it again to hide the panel. <em>Start</em> / <em>Stop</em> runs and pauses the timer; <em>Reset</em> zeroes it back to 0:00.</li>
+      <li>The same panel configures two optional cues:
+        <ul>
+          <li><em>Warning</em> — two tones a second apart when the timer reaches your chosen time.</li>
+          <li><em>Alarm</em> — a short triple beep repeated every 1.5 seconds for about nine seconds.</li>
+          <li>When either cue fires, the timer panel slides open for three seconds if it was closed, so you can see where you are.</li>
+        </ul>
+      </li>
+      <li>Set Warning and Alarm times as minutes and seconds. Invalid times (0:00, negative, or empty) are highlighted and the toggle is switched off automatically. Timer settings are saved on this device only.</li>
+
+      <li>Your work is auto-saved per template on this device. If a template changes, drafts tied to that template are cleared. If you return after a long gap, older drafts are not restored. Switch templates to keep each draft intact in the meantime.</li>
+      <li>The word and character counts in the top bar total the text across every feedback box and update as you type.</li>
+      <li>Pull out the <em>Preview</em> tab on the left edge to see a rendered view of your feedback before copying. Clicking <em>Copy</em> never opens the preview. Press Ctrl/Cmd + Enter anywhere to copy.</li>
+      <li>The Preview panel includes an <em>“Include HTML tags”</em> checkbox. Leave it ticked to copy text with HTML tags; untick it to copy plain text with real line breaks instead, for places that don't accept HTML.</li>
+
+      <li>The copied HTML text contains tags such as <em>&lt;br&gt;</em> and <em>&lt;b&gt;…&lt;/b&gt;</em>. A plain-text editor will show them literally; a rich-text box may render them.</li>
+      <li>Each newline you type is encoded as a <em>&lt;br&gt;</em> tag in the HTML output — this is how your paragraph breaks survive the paste.</li>
+    </ul>
+
+    <p class="help-contact" id="helpContact" hidden>
+      <strong>Need help?</strong> Contact <span id="helpContactName"></span>
+      (<a id="helpContactLink"></a>).
+    </p>
+
+    <button type="button" class="btn btn-primary" id="closeInstructionsBtn">Got it</button>
+  </div>
+</dialog>
+
+<!-- ==================== Draft restore dialog ==================== -->
+<dialog class="app-dialog restore-dialog" id="restoreDialog" aria-labelledby="restoreTitle">
+  <div class="app-dialog-inner">
+    <h2 id="restoreTitle">Restore your previous draft?</h2>
+    <p id="restoreSummary">A draft from your last session is saved on this device.</p>
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-ghost" id="restoreDiscard">Start fresh</button>
+      <button type="button" class="btn btn-primary" id="restoreAccept">Restore draft</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Off-screen buffer used for the execCommand clipboard fallback -->
+<textarea id="contentTA" aria-hidden="true" tabindex="-1"></textarea>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

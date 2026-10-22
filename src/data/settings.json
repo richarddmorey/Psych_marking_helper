@@ -1,0 +1,29 @@
+{
+  "storage": {
+    "prefsKey": "pmh-prefs-v4",
+    "draftsKey": "pmh-drafts-v4",
+    "timerKey": "pmh-timer-v1",
+    "maxDraftAgeDays": 5,
+    "autosaveDelayMs": 500
+  },
+  "help": {
+    "contactName": "Richard Morey",
+    "contactEmail": "moreyr@cardiff.ac.uk",
+    "emailSubject": "Marking helper app"
+  },
+  "ui": {
+    "textareaMaxHeightRatio": 0.4,
+    "toastDefaultMs": 2400,
+    "toastWithActionMs": 10000,
+    "toastStorageWarningMs": 6000
+  },
+  "timer": {
+    "defaultWarningSec": 120,
+    "defaultAlarmSec": 300,
+    "tickIntervalMs": 200,
+    "panelRevealMs": 3000,
+    "warningTone": { "freqHz": 880, "durationSec": 1.0, "gapSec": 0.25 },
+    "alarmTone": { "freqHz": 660, "beepSec": 0.1, "beepStepSec": 0.15, "beepsPerCycle": 3, "cycleMs": 1500, "cycles": 6 },
+    "volume": 0.3
+  }
+}

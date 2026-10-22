@@ -1,0 +1,51 @@
+function $<T extends HTMLElement = HTMLElement>(id: string): T {
+  const el = document.getElementById(id);
+  if (!el) throw new Error(`Missing element #${id}`);
+  return el as T;
+}
+
+export const contentEl = $('content');
+export const topbar = $('topbar');
+export const brandTitleText = $('brandTitleText');
+export const templateSelect = $<HTMLSelectElement>('templateSelect');
+export const nameInput = $<HTMLInputElement>('name');
+export const nameError = $('nameError');
+export const wordCountValue = $('wordCountValue');
+export const charCountValue = $('charCountValue');
+export const resetAllBtn = $('resetAllBtn');
+export const openInstructions = $('openInstructions');
+export const instrDialog = $<HTMLDialogElement>('instrDialog');
+export const helpContact = $('helpContact');
+export const helpContactName = $('helpContactName');
+export const helpContactLink = $<HTMLAnchorElement>('helpContactLink');
+export const closeInstrBtn = $('closeInstructions');
+export const closeInstrBtn2 = $('closeInstructionsBtn');
+export const restoreDialog = $<HTMLDialogElement>('restoreDialog');
+export const restoreSummary = $('restoreSummary');
+export const restoreAccept = $('restoreAccept');
+export const restoreDiscard = $('restoreDiscard');
+export const previewDock = $('previewDock');
+export const previewPanelInner = $('previewPanelInner');
+export const previewTab = $('previewTab');
+export const previewBody = $('previewBody');
+export const previewSubtitle = $('previewSubtitle');
+export const previewBoxLabel = $('previewBoxLabel');
+export const previewWarning = $('previewWarning');
+export const htmlModeToggle = $<HTMLInputElement>('htmlModeToggle');
+export const toastEl = $('toast');
+export const copyTab = $('copyTab');
+export const copyArea = $<HTMLTextAreaElement>('contentTA');
+
+export const timerDock = $('timerDock');
+export const timerTab = $('timerTab');
+export const timerDisplay = $('timerDisplay');
+export const timerStartStop = $('timerStartStop');
+export const timerResetBtn = $('timerReset');
+export const warningToggle = $<HTMLInputElement>('warningToggle');
+export const warningMin = $<HTMLInputElement>('warningMin');
+export const warningSec = $<HTMLInputElement>('warningSec');
+export const warningDur = $('warningDuration');
+export const alarmToggle = $<HTMLInputElement>('alarmToggle');
+export const alarmMin = $<HTMLInputElement>('alarmMin');
+export const alarmSec = $<HTMLInputElement>('alarmSec');
+export const alarmDur = $('alarmDuration');

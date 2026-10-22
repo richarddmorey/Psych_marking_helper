@@ -1,0 +1,89 @@
+/* ------------------------------------------------------------------ */
+/*  Responsive                                                          */
+/* ------------------------------------------------------------------ */
+@media (max-width: 950px) {
+  .brand h1 .brand-suffix { display: none; }
+}
+
+@media (max-width: 800px) {
+  .section-body { grid-template-columns: 1fr; }
+    .topbar-controls { width: 100%; }
+  .name-field { flex: 1 1 140px; }
+  .name-input { width: 100%; }
+}
+
+@media (max-width: 720px) {
+  .howto { padding: 6px; }
+  .howto > span:not(.howto-icon) { display: none; }
+  .howto-icon { width: 24px; height: 24px; font-size: 0.9rem; }
+  .page { padding: 22px 14px 110px; }
+  .topbar-inner { padding: 9px 14px; }
+  .section { padding: 22px 18px; }
+  .section-reset { top: 14px; right: 14px; }
+  textarea.comments { min-height: 8em; }
+  .app-dialog-inner { padding: 26px 22px 24px; }
+  .toast { bottom: 96px; }
+
+  .preview-panel { width: min(360px, 90vw); }
+  .side-tabs { gap: 6px; }
+  :root { --tab-w: 40px; --tab-h: 100px; --tab-offset: -40px; }
+  .side-tab { font-size: 0.62rem; }
+
+  .timer-tab { height: 28px; font-size: 0.66rem; padding: 0 12px; min-width: 84px; }
+  .timer-display { font-size: 1.9rem; }
+  .timer-panel { padding: 14px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 18px 10px 100px; }
+  .topbar-inner { padding: 8px 10px; }
+  .brand-mark { width: 26px; height: 26px; font-size: 0.8rem; }
+  .brand h1 { font-size: 1rem; }
+
+  .word-count { padding: 6px 10px; gap: 4px; }
+  .word-count-value { font-size: 0.9rem; }
+  .word-count-label { font-size: 0.54rem; }
+  .word-count-sep { margin: 0; }
+
+  .field-label { font-size: 0.6rem; margin-bottom: 3px; }
+  .name-input,
+  .template-input { font-size: 0.85rem; padding: 8px 10px; }
+  .template-input { padding-right: 26px; background-position: right 8px center; }
+
+
+  .btn { padding: 8px 12px; font-size: 0.8rem; }
+
+  .section { padding: 20px 14px; }
+  .section-head h3 { font-size: 1.12rem; gap: 10px; }
+  .section-head h3::before { width: 9px; height: 9px; }
+  textarea.comments { min-height: 6.5em; font-size: 0.9rem; }
+  .consider { font-size: 0.82rem; padding: 9px 12px; }
+  .section-word-count { font-size: 0.68rem; }
+
+  .preview-panel { width: min(320px, 88vw); }
+  :root { --tab-w: 34px; --tab-h: 84px; --tab-offset: -34px; }
+  .side-tabs { gap: 5px; }
+  .side-tab { font-size: 0.56rem; }
+
+  .timer-tab { height: 26px; font-size: 0.62rem; padding: 0 10px; min-width: 76px; }
+  .timer-tab svg { width: 16px; height: 16px; }
+  .timer-panel { padding: 12px; width: 280px; }
+  .timer-display { font-size: 1.7rem; }
+  .timer-buttons .btn { padding: 7px 8px; font-size: 0.76rem; }
+  .settings-label { font-size: 0.8rem; }
+}
+
+@media (max-width: 380px) {
+  .preview-panel { width: 85vw; }
+  :root { --tab-w: 30px; --tab-h: 76px; --tab-offset: -30px; }
+  .side-tab { font-size: 0.52rem; }
+  .word-count-label { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
