@@ -13,12 +13,19 @@ export function applyTemplateChrome(): void {
   brandTitleText.textContent = template.title;
 }
 
+export function syncTemplateQuery(): void {
+  const url = new URL(window.location.href);
+  url.searchParams.set('template', prefs.template);
+  window.history.replaceState(window.history.state, '', url);
+}
+
 export function switchTemplate(id: string): void {
   if (!isSelectableTemplate(id) || id === prefs.template) return;
 
   saveDrafts();
   prefs.template = id;
   savePrefs();
+  syncTemplateQuery();
 
   applyTemplateChrome();
   renderSections();

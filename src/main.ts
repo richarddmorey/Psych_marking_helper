@@ -12,7 +12,7 @@ import {
   copyTab
 } from './dom';
 import { SETTINGS } from './data/settings';
-import { ACTIVE_TEMPLATES } from './data/templates';
+import { ACTIVE_TEMPLATES, isSelectableTemplate } from './data/templates';
 import { currentDraft, prefs } from './state';
 import {
   flushDraftsSave, loadDrafts, loadPrefs, loadTimerSettings, savePrefs, storageAvailable
@@ -21,7 +21,9 @@ import { sectionsHaveContent } from './lib/text';
 import { copyToClipboard } from './ui/clipboard';
 import { bindInstructionsDialog, offerDraftRestore } from './ui/dialogs';
 import { clearNameError } from './ui/nameValidation';
-import { applyTemplateChrome, clearSection, handleTextareaInput, resetAll, switchTemplate } from './ui/actions';
+import {
+  applyTemplateChrome, clearSection, handleTextareaInput, resetAll, switchTemplate, syncTemplateQuery
+} from './ui/actions';
 import { setPreviewOpen, updatePreview } from './ui/preview';
 import { renderSections, toggleCollapse } from './ui/sections';
 import { showToast } from './ui/toast';
@@ -118,11 +120,17 @@ function populateTemplateSelect(): void {
 
 function init(): void {
   loadPrefs();
+  const requestedTemplate = new URLSearchParams(window.location.search).get('template');
+  if (isSelectableTemplate(requestedTemplate)) {
+    prefs.template = requestedTemplate;
+    savePrefs();
+  }
   loadDrafts();
   loadTimerSettings();
 
   populateTemplateSelect();
   templateSelect.value = prefs.template;
+  syncTemplateQuery();
   nameInput.value = prefs.name || '';
   htmlModeToggle.checked = prefs.htmlMode !== false;
 

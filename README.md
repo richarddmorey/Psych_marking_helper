@@ -51,6 +51,8 @@ All tweakable settings are in [`src/data/settings.json`](src/data/settings.json)
 
 Templates are configured separately in [`src/data/templates.json`](src/data/templates.json): `id`, `title`, optional `active`, `prefixes` (`good`, `improve`) and `sections` (`id`, `heading`, optional `consider` and `final`, and `boxes` with `key`, optional `kind` of `good` or `improve`, and `placeholder`). Changing a template's prefixes or sections invalidates existing drafts for it.
 
+You can link directly to a template with the `template` query parameter, for example `?template=essay`. A valid template in the URL takes precedence over the saved selection; the URL is kept in sync when the page loads and when the selected template changes.
+
 ## Develop
 
 ```sh
