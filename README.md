@@ -2,6 +2,8 @@
 
 Client-side single-page app (v4.1.1) for School of Psychology markers to compose structured feedback and copy it into TurnItIn. Built with Vite + TypeScript; no runtime dependencies, no server, no network storage.
 
+App active at: https://richarddmorey.github.io/Psych_marking_helper/
+
 ## Features
 
 **Feedback composition**
